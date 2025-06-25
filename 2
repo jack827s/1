@@ -1,1 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Secure Portal</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
 
+    body {
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #fff;
+      position: relative;
+    }
+
+    .main-content {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 10px;
+    }
+
+    .content-wrapper {
+      width: 100%;
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .content-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    .image-container {
+      width: 90%;
+      max-width: 500px;
+      margin: 5px auto;
+      text-align: center;
+    }
+
+    .tutorial-img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+    }
+
+    .image-caption {
+      color: #0f0;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .container {
+      width: 90%;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid #444;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+      text-align: center;
+      z-index: 2;
+      margin: 10px 0;
+    }
+
+    h1 {
+      color: #0f0;
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+
+    .btn {
+      display: block;
+      padding: 12px;
+      margin: 10px 0;
+      background: linear-gradient(135deg, #0088cc, #00aced);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+      width: 100%;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-iphone {
+      background: linear-gradient(135deg, #007aff, #5856d6);
+    }
+
+    .btn-android {
+      background: linear-gradient(135deg, #3ddc84, #2bb673);
+    }
+
+    .loading {
+      display: none;
+      margin-top: 15px;
+      color: #0f0;
+    }
+
+    .copy-instructions {
+      display: none;
+      margin-top: 15px;
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+    }
+
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background-color: rgba(0, 255, 0, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    #copy-btn {
+      padding: 8px 15px;
+      margin-top: 8px;
+      background: #0f0;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="particles" id="particles"></div>
+  
+  <div class="main-content">
+    <div class="content-wrapper">
+      <!-- Tutorial Step 1 -->
+      <div class="image-container">
+        <img src="https://ninja67.serv00.net/Roblox/IMG_0104.png" alt="Tutorial Step 1" class="tutorial-img" />
+        <div class="image-caption">وەک رەسمەکە بکە تەنیا ئەگەر لە تیک توکەوە لینکەکە دەکەیەوە </div>
+      </div>
+
+      <!-- Tutorial Step 2 -->
+      <div class="image-container">
+        <img src="https://ninja67.serv00.net/Roblox/IMG_0106.png" alt="Tutorial Step 2" class="tutorial-img" />
+        <div class="image-caption">بو ئەوەی لە تیک توک دەرچی بچیتە سەر سەفاری یان گوگل</div>
+      </div>
+
+      <div class="container">
+        <h1>👇🏾وەک ئەمە بکە، دوای👆🏾</h1>
+
+        <a href="#" class="btn" id="telegram-btn">
+          ‎دابەزاندن لە تیلیگرام ( هەمو فێرکاری تێدایە )
+        </a>
+
+        <a href="#" class="btn btn-iphone" id="iphone-btn">
+          ‎دابەزاندن بو ئەندروید بەبێ تیلیگرام
+        </a>
+
+        <a href="#" class="btn btn-android" id="android-btn">
+          ‎دابەزاندن بو ئایفون بەبێ تیلیگرام
+        </a>
+
+        <div class="loading" id="loading">
+          Processing request... Please wait
+        </div>
+
+        <div class="copy-instructions" id="copy-instructions">
+          <p>TikTok blocked direct opening. Please:</p>
+          <p>1. Copy this link: <span id="link-to-copy"></span></p>
+          <p>2. Paste it in your browser</p>
+          <button id="copy-btn">COPY LINK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function createParticles() {
+      const container = document.getElementById('particles');
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.width = `${Math.random() * 5 + 2}px`;
+        particle.style.height = particle.style.width;
+        particle.style.left = `${Math.random() * 100}vw`;
+        particle.style.top = `${Math.random() * 100}vh`;
+        particle.style.opacity = Math.random() * 0.5 + 0.1;
+
+        const duration = Math.random() * 20 + 10;
+        particle.style.animation = `float ${duration}s linear infinite`;
+
+        const keyframes = `
+          @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px); }
+          }
+        `;
+
+        const style = document.createElement('style');
+        style.innerHTML = keyframes;
+        document.head.appendChild(style);
+
+        container.appendChild(particle);
+      }
+    }
+
+    function openLink(url) {
+      const loading = document.getElementById('loading');
+      const copyInstructions = document.getElementById('copy-instructions');
+      const linkToCopy = document.getElementById('link-to-copy');
+
+      loading.style.display = 'block';
+      copyInstructions.style.display = 'none';
+
+      setTimeout(() => {
+        const newWindow = window.open('', '_blank');
+        if (newWindow) {
+          try {
+            newWindow.location.href = url;
+            return;
+          } catch (e) {}
+        }
+
+        setTimeout(() => {
+          window.location.href = `https://www.google.com/url?q=${encodeURIComponent(url)}`;
+          setTimeout(() => {
+            loading.style.display = 'none';
+            copyInstructions.style.display = 'block';
+            linkToCopy.textContent = url;
+
+            document.getElementById('copy-btn').onclick = function () {
+              navigator.clipboard.writeText(url).then(() => {
+                alert('Link copied to clipboard! Paste it in your browser.');
+              }).catch(() => {
+                prompt('Copy this link manually:', url);
+              });
+            };
+          }, 1000);
+        }, 500);
+      }, 500);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      createParticles();
+
+      document.getElementById('telegram-btn').onclick = function (e) {
+        e.preventDefault();
+        openLink('https://t.me/jack_827');
+      };
+
+      document.getElementById('iphone-btn').onclick = function (e) {
+        e.preventDefault();
+        openLink('https://t.me/jackk');
+      };
+
+      document.getElementById('android-btn').onclick = function (e) {
+        e.preventDefault();
+        openLink('https://t.me/jakoandroid');
+      };
+
+      document.querySelectorAll('a').forEach(link => {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+        link.href = 'javascript:void(0)';
+      });
+      
+      // Disable pinch zoom
+      document.addEventListener('touchmove', function (e) {
+        if (e.scale !== 1) { e.preventDefault(); }
+      }, { passive: false });
+    });
+  </script>
+</body>
+</html>
