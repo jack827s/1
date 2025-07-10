@@ -161,28 +161,28 @@
     <div class="content-wrapper">
       <!-- Tutorial Step 1 -->
       <div class="image-container">
-        <img src="https://ninja67.serv00.net/Roblox/IMG_0104.png" alt="Tutorial Step 1" class="tutorial-img" />
-        <div class="image-caption">وەک رەسمەکە بکە تەنیا ئەگەر لە تیک توکەوە لینکەکە دەکەیەوە </div>
+        <img src="https://ninja67.serv00.net/Kurdish/IMG_0061.png" alt="Tutorial Step 1" class="tutorial-img" />
+        <div class="image-caption">لەسەرەوە ئەمە داگرە</div>
       </div>
 
       <!-- Tutorial Step 2 -->
       <div class="image-container">
-        <img src="https://ninja67.serv00.net/Roblox/IMG_0106.png" alt="Tutorial Step 2" class="tutorial-img" />
-        <div class="image-caption">بو ئەوەی لە تیک توک دەرچی بچیتە سەر سەفاری یان گوگل</div>
+        <img src="https://ninja67.serv00.net/Kurdish/IMG_0062.png" alt="Tutorial Step 2" class="tutorial-img" />
+        <div class="image-caption">دوای لە خوارەوە ئەمە داگرە</div>
       </div>
 
       <div class="container">
         <h1>👇🏾وەک ئەمە بکە، دوای👆🏾</h1>
 
-        <a href="#" class="btn" id="telegram-btn">
+        <a href="https://t.me/jack_827" class="btn" id="telegram-btn" target="_blank" rel="noopener noreferrer">
           ‎دابەزاندن لە تیلیگرام ( هەمو فێرکاری تێدایە )
         </a>
 
-        <a href="#" class="btn btn-iphone" id="iphone-btn">
+        <a href="https://ninja67.serv00.net/Kurdish/and.html" class="btn btn-iphone" id="iphone-btn" target="_blank" rel="noopener noreferrer">
           ‎دابەزاندن بو ئەندروید بەبێ تیلیگرام
         </a>
 
-        <a href="#" class="btn btn-android" id="android-btn">
+        <a href="https://ninja67.serv00.net/Kurdish/ios.html" class="btn btn-android" id="android-btn" target="_blank" rel="noopener noreferrer">
           ‎دابەزاندن بو ئایفون بەبێ تیلیگرام
         </a>
 
@@ -230,65 +230,8 @@
       }
     }
 
-    function openLink(url) {
-      const loading = document.getElementById('loading');
-      const copyInstructions = document.getElementById('copy-instructions');
-      const linkToCopy = document.getElementById('link-to-copy');
-
-      loading.style.display = 'block';
-      copyInstructions.style.display = 'none';
-
-      setTimeout(() => {
-        const newWindow = window.open('', '_blank');
-        if (newWindow) {
-          try {
-            newWindow.location.href = url;
-            return;
-          } catch (e) {}
-        }
-
-        setTimeout(() => {
-          window.location.href = `https://www.google.com/url?q=${encodeURIComponent(url)}`;
-          setTimeout(() => {
-            loading.style.display = 'none';
-            copyInstructions.style.display = 'block';
-            linkToCopy.textContent = url;
-
-            document.getElementById('copy-btn').onclick = function () {
-              navigator.clipboard.writeText(url).then(() => {
-                alert('Link copied to clipboard! Paste it in your browser.');
-              }).catch(() => {
-                prompt('Copy this link manually:', url);
-              });
-            };
-          }, 1000);
-        }, 500);
-      }, 500);
-    }
-
     document.addEventListener('DOMContentLoaded', function () {
       createParticles();
-
-      document.getElementById('telegram-btn').onclick = function (e) {
-        e.preventDefault();
-        openLink('https://t.me/jack_827');
-      };
-
-      document.getElementById('iphone-btn').onclick = function (e) {
-        e.preventDefault();
-        openLink('https://t.me/jackk');
-      };
-
-      document.getElementById('android-btn').onclick = function (e) {
-        e.preventDefault();
-        openLink('https://t.me/jakoandroid');
-      };
-
-      document.querySelectorAll('a').forEach(link => {
-        link.setAttribute('target', '_blank');
-        link.setAttribute('rel', 'noopener noreferrer');
-        link.href = 'javascript:void(0)';
-      });
       
       // Disable pinch zoom
       document.addEventListener('touchmove', function (e) {
